@@ -131,29 +131,21 @@ export const ProductPage = () => {
   }
 
   if (hasMediumContent) {
-    const isImplantCategory = categoryId === 'implants';
-    const features = isImplantCategory
-      ? [
-          { title: 'Precision Engineered', desc: 'Designed for predictable placement and long-term stability.', icon: <Zap size={18} /> },
-          { title: 'Clinical Reliability', desc: 'Backed by documented clinical outcomes and quality standards.', icon: <Shield size={18} /> },
-          { title: 'Prosthetic Flexibility', desc: 'Compatible with a wide range of restorative options.', icon: <Layers size={18} /> },
-          { title: 'Documented Outcomes', desc: 'Evidence-based solutions for modern implant practice.', icon: <Activity size={18} /> },
-        ]
-      : [
-          { title: 'Quality Assured', desc: 'Products meet stringent quality and regulatory standards.', icon: <Shield size={18} /> },
-          { title: 'Clinical Grade', desc: 'Suitable for use in professional dental and surgical settings.', icon: <Check size={18} /> },
-          { title: 'Easy to Use', desc: 'Designed for efficient workflows and consistent results.', icon: <Zap size={18} /> },
-          { title: 'Trusted Supply', desc: 'Reliable availability from established partners.', icon: <Layers size={18} /> },
-        ];
+    const featureIcons = [<Zap size={18} />, <Shield size={18} />, <Layers size={18} />, <Activity size={18} />, <Check size={18} />, <ArrowRight size={18} />];
+    const productFeatures = product.features || [];
+    const productSpecs = product.specs || {};
+    const productBenefits = product.benefits || [];
+    const specEntries = Object.entries(productSpecs);
 
     return (
       <div className="bg-white min-h-screen">
-        <section className="bg-black pt-[136px] sm:pt-[140px] md:pt-[144px] pb-16 md:pb-20 relative overflow-hidden">
+        {/* Hero */}
+        <section className="bg-black pt-[160px] sm:pt-[168px] md:pt-[176px] pb-16 md:pb-20 relative overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-40">
             <img src={imgGroup381671} alt="" className="w-full h-full object-cover" />
           </div>
           <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
-            <div className="flex items-center gap-1.5 mb-6 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em]">
+            <div className="flex items-center gap-1.5 mb-8 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em]">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <ChevronRight size={12} className="text-[#ABABAB]" />
               <Link to="/solutions" className="hover:text-white transition-colors">Solutions</Link>
@@ -164,78 +156,128 @@ export const ProductPage = () => {
               <ChevronRight size={12} className="text-[#DD005C]" />
               <span className="text-[#DD005C]">{product.name}</span>
             </div>
-            <div className="text-center max-w-3xl mx-auto">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-white text-2xl sm:text-3xl md:text-4xl font-medium font-['Montserrat'] mb-4 leading-tight"
-              >
+            <div className="max-w-3xl">
+              {product.refNumber && (
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full border border-white/10 mb-4">
+                  <span className="text-white/70 text-[9px] font-bold uppercase tracking-widest font-['Montserrat']">Ref: {product.refNumber}</span>
+                </motion.div>
+              )}
+              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-white text-2xl sm:text-3xl md:text-4xl font-medium font-['Montserrat'] mb-3 leading-tight">
                 {product.name}
               </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-white/80 text-sm md:text-base font-['Montserrat'] max-w-2xl mx-auto leading-relaxed mb-8"
-              >
-                {product.description || 'Professional-grade solution for modern clinical practice.'}
+              {product.tagline && (
+                <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="text-[#DD005C] text-xs font-semibold font-['Montserrat'] uppercase tracking-[0.15em] mb-4">
+                  {product.tagline}
+                </motion.p>
+              )}
+              <motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-white/80 text-sm md:text-base font-['Montserrat'] max-w-2xl leading-relaxed mb-8">
+                {product.description}
               </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="flex flex-wrap items-center justify-center gap-3"
-              >
-                <a
-                  href={product.productLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto bg-gradient-to-r from-[#DD005C] to-[#0542BD] text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
-                >
-                  View Product Details
-                  <ExternalLink size={14} />
+              <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-wrap items-center gap-3">
+                <a href={product.productLink} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-[#DD005C] to-[#0542BD] text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center gap-2 hover:opacity-90 transition-opacity">
+                  View Product Details <ExternalLink size={14} />
                 </a>
                 {product.brochureLink && (
-                  <a
-                    href={product.brochureLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto bg-white/10 text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] border border-white/20 flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
-                  >
-                    Download Brochure
-                    <FileDown size={14} />
+                  <a href={product.brochureLink} target="_blank" rel="noopener noreferrer" className="bg-white/10 text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] border border-white/20 flex items-center gap-2 hover:bg-white/20 transition-all">
+                    Download Brochure <FileDown size={14} />
                   </a>
                 )}
-                <Link
-                  to={`/solutions/${typeId}/${categoryId}`}
-                  className="w-full sm:w-auto border border-white/20 text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center justify-center gap-2 hover:bg-white/10 transition-all"
-                >
-                  Back to {categoryData?.name}
-                  <ArrowRight size={14} />
-                </Link>
               </motion.div>
             </div>
           </div>
         </section>
 
-        <section className="py-16 bg-[#F9FAFB]">
-          <div className="max-w-[1200px] mx-auto px-6">
-            <div className="text-center mb-10">
-              <h2 className="text-[#070707] text-2xl md:text-3xl font-bold font-['Montserrat'] mb-2">Key Features</h2>
-              <p className="text-[#6B7280] text-sm font-['Arial'] max-w-xl mx-auto">Designed for clinical excellence and reliable outcomes.</p>
+        {/* Features */}
+        {productFeatures.length > 0 && (
+          <section className="py-16 bg-white">
+            <div className="max-w-[1200px] mx-auto px-6">
+              <div className="mb-10 max-w-2xl">
+                <h2 className="font-['Montserrat'] font-bold text-2xl md:text-3xl mb-2 text-[#070707]">Key Features</h2>
+                <p className="font-['Arial'] text-sm text-black/60">Every detail designed for optimal clinical performance.</p>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-5">
+                {productFeatures.map((feat, i) => (
+                  <motion.div key={i} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }} className="rounded-2xl p-5 bg-[#F9FAFB] border border-[#ebebeb] flex gap-4 items-start">
+                    <div className="rounded-xl bg-gradient-to-br from-[#0542BD] to-[#021A4C] p-2.5 shrink-0 text-white">
+                      {featureIcons[i % featureIcons.length]}
+                    </div>
+                    <div>
+                      <h3 className="font-['Montserrat'] font-bold text-[14px] text-[#070707] mb-1">{feat.title}</h3>
+                      <p className="font-['Arial'] text-[12px] text-[#6B7280] leading-relaxed">{feat.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {features.map((item, i) => (
-                <div key={i} className="rounded-2xl p-5 bg-white border border-[#ebebeb] flex gap-4 items-start">
-                  <div className="rounded-xl bg-gradient-to-br from-[#0542BD] to-[#021A4C] p-2.5 shrink-0 text-white">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-['Montserrat'] font-bold text-[14px] text-[#070707] mb-1">{item.title}</h3>
-                    <p className="font-['Arial'] text-[12px] text-[#6B7280] leading-snug">{item.desc}</p>
-                  </div>
+          </section>
+        )}
+
+        {/* Specifications */}
+        {specEntries.length > 0 && (
+          <section className="py-16 bg-black relative overflow-hidden">
+            <div className="absolute inset-0 opacity-100">
+              <img src={imgGroup381671} alt="" className="w-full h-full object-cover" />
+            </div>
+            <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+              <div className="mb-10">
+                <div className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full border border-white/10 mb-4">
+                  <span className="text-white text-[9px] font-bold uppercase tracking-widest font-['Montserrat']">Technical Specifications</span>
                 </div>
-              ))}
+                <h2 className="font-['Montserrat'] font-bold text-2xl md:text-3xl text-white">Product Specifications</h2>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {specEntries.map(([key, value], i) => (
+                  <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                    <div className="text-white/40 text-[9px] font-bold uppercase tracking-wider font-['Montserrat'] mb-1.5">{key}</div>
+                    <div className="text-white font-semibold text-sm font-['Montserrat']">{value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Benefits */}
+        {productBenefits.length > 0 && (
+          <section className="py-16 bg-[#F9FAFB]">
+            <div className="max-w-[1200px] mx-auto px-6">
+              <div className="text-center mb-10">
+                <h2 className="text-[#070707] text-2xl md:text-3xl font-bold font-['Montserrat'] mb-2">Clinical Benefits</h2>
+                <p className="text-[#6B7280] text-sm font-['Arial'] max-w-xl mx-auto">Designed to enhance your clinical workflow and patient outcomes.</p>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {productBenefits.map((benefit, i) => (
+                  <div key={i} className="flex gap-3 items-start bg-white rounded-2xl p-5 border border-[#ebebeb]">
+                    <div className="size-5 rounded-full bg-[#0542BD]/10 flex items-center justify-center text-[#0542BD] shrink-0 mt-0.5">
+                      <Check size={12} />
+                    </div>
+                    <span className="text-[#070707] text-[13px] font-['Montserrat'] font-medium">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* CTA */}
+        <section className="py-16 bg-white">
+          <div className="max-w-[800px] mx-auto px-6 text-center">
+            <h2 className="text-[#070707] text-2xl md:text-3xl font-bold font-['Montserrat'] mb-3">Interested in {product.name}?</h2>
+            <p className="text-[#6B7280] text-sm font-['Arial'] mb-8 max-w-lg mx-auto">
+              Get detailed product information, pricing, and availability from our team.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a href={product.productLink} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-[#DD005C] to-[#0542BD] text-white px-8 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center gap-2 hover:opacity-90 transition-opacity">
+                View Full Product Details <ExternalLink size={14} />
+              </a>
+              {product.brochureLink && (
+                <a href={product.brochureLink} target="_blank" rel="noopener noreferrer" className="bg-[#070707] text-white px-8 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center gap-2 hover:bg-[#1a1a1a] transition-colors">
+                  Download Brochure <FileDown size={14} />
+                </a>
+              )}
+              <Link to={`/solutions/${typeId}/${categoryId}`} className="border border-[#ebebeb] text-[#070707] px-8 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center gap-2 hover:bg-[#F9FAFB] transition-colors">
+                Back to {categoryData?.name} <ArrowRight size={14} />
+              </Link>
             </div>
           </div>
         </section>
