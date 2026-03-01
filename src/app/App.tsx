@@ -41,41 +41,103 @@ function AppLayout() {
   const navigationType = useNavigationType();
   const isHome = location.pathname === '/';
 
-  // Basic SEO-friendly document titles based on current route
-  useEffect(() => {
-    const segments = location.pathname.split('/').filter(Boolean);
+  function upcaseWords(input: string) {
+    return input
+      .split(' ')
+      .filter(Boolean)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+
+  function ensureMetaTag(attr: 'name' | 'property', key: string) {
+    const selector = `meta[${attr}="${key}"]`;
+    let el = document.head.querySelector(selector) as HTMLMetaElement | null;
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(attr, key);
+      document.head.appendChild(el);
+    }
+    return el;
+  }
+
+  function ensureLinkRel(rel: string) {
+    const selector = `link[rel="${rel}"]`;
+    let el = document.head.querySelector(selector) as HTMLLinkElement | null;
+    if (!el) {
+      el = document.createElement('link');
+      el.rel = rel;
+      document.head.appendChild(el);
+    }
+    return el;
+  }
+
+  function getSeoForPath(pathname: string) {
+    const segments = pathname.split('/').filter(Boolean);
     let pageTitle = 'Home';
+    let description =
+      'Zircon Medical Equipment connects global innovation with GCC healthcare professionals across dental and medical solutions—products, education, events, and support.';
 
     if (segments[0] === 'about') {
       pageTitle = 'About Us';
+      description =
+        'Learn about Zircon Medical Equipment—our mission, values, and how we support healthcare professionals across the GCC.';
     } else if (segments[0] === 'solutions') {
       if (segments.length === 1) {
         pageTitle = 'Solutions';
+        description =
+          'Explore Zircon’s portfolio of dental and medical solutions—products curated for quality, clinical relevance, and reliability.';
       } else if (segments.length === 2) {
-        // /solutions/:typeId
         pageTitle = `${segments[1].replace(/-/g, ' ')} Solutions`;
+        description = `Explore ${segments[1].replace(/-/g, ' ')} solutions—categories and products tailored for modern clinical workflows.`;
       } else if (segments.length === 3) {
-        // /solutions/:typeId/:categoryId
         pageTitle = `${segments[2].replace(/-/g, ' ')} – Category`;
+        description = `Browse products in ${segments[2].replace(/-/g, ' ')}—specifications, highlights, and related solutions.`;
       } else if (segments.length >= 4) {
-        // /solutions/:typeId/:categoryId/:productId
         pageTitle = `${segments[3].replace(/-/g, ' ')} – Product`;
+        description = `Discover ${segments[3].replace(/-/g, ' ')}—details, clinical highlights, and supporting resources.`;
       }
     } else if (segments[0] === 'education') {
       pageTitle = 'Education';
+      description =
+        'Explore education resources, clinical case studies, and learning opportunities from Zircon Medical Equipment.';
     } else if (segments[0] === 'events') {
       pageTitle = 'Events';
+      description =
+        'See upcoming exhibitions, workshops, and educational events from Zircon Medical Equipment across the GCC.';
     } else if (segments[0] === 'contact') {
       pageTitle = 'Contact Us';
+      description =
+        'Contact Zircon Medical Equipment to request a consultation, product information, or partnership support.';
     }
 
-    // Fallback: capitalize words
-    pageTitle = pageTitle
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+    pageTitle = upcaseWords(pageTitle);
+    return { pageTitle, description };
+  }
 
-    document.title = `${pageTitle} | Zircon Medical Equipment`;
+  // Basic SEO: title + meta description + canonical + OG/Twitter tags
+  useEffect(() => {
+    const { pageTitle, description } = getSeoForPath(location.pathname);
+
+    const fullTitle = `${pageTitle} | Zircon Medical Equipment`;
+    document.title = fullTitle;
+
+    // Meta description
+    ensureMetaTag('name', 'description').content = description;
+
+    // Canonical (exclude query/hash)
+    const canonicalUrl = `${window.location.origin}${location.pathname}`;
+    ensureLinkRel('canonical').href = canonicalUrl;
+
+    // Open Graph
+    ensureMetaTag('property', 'og:title').content = fullTitle;
+    ensureMetaTag('property', 'og:description').content = description;
+    ensureMetaTag('property', 'og:url').content = canonicalUrl;
+    ensureMetaTag('property', 'og:type').content = 'website';
+    ensureMetaTag('property', 'og:site_name').content = 'Zircon Medical Equipment';
+
+    // Twitter
+    ensureMetaTag('name', 'twitter:title').content = fullTitle;
+    ensureMetaTag('name', 'twitter:description').content = description;
   }, [location.pathname, location.search]);
 
   // Scroll restoration:

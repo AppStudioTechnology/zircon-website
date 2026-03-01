@@ -60,15 +60,14 @@ export const Header = () => {
     <>
       <header 
         className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
-          scrolled ? 'py-2' : 'py-4 md:py-6'
+          scrolled ? 'py-0' : 'py-0'
         }`}
       >
-        <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)]">
-          <motion.nav 
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className={`bg-[#070707] rounded-[44px] flex items-center justify-between pl-6 pr-2 py-2 shadow-2xl backdrop-blur-md relative border border-white/5`}
-          >
+        <motion.nav 
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="w-full bg-[#070707] flex items-center justify-between pl-[clamp(16px,3vw,48px)] pr-[clamp(8px,2vw,24px)] py-3 shadow-2xl backdrop-blur-md relative border-b border-white/5"
+        >
             {/* Logo */}
             <Link to="/" className="flex items-center shrink-0">
               <img 
@@ -239,7 +238,6 @@ export const Header = () => {
               )}
             </AnimatePresence>
           </motion.nav>
-        </div>
       </header>
 
       {/* Mega Menu Integration */}
