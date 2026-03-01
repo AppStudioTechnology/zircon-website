@@ -28,11 +28,15 @@ import img1YearFollowUp from "figma:asset/7d85495cf8878a200fd90e2d2f70dbd3eb6127
 // Surgical Kit Assets
 import imgSurgicalKitHero from "../assets/surgical-kit.png";
 
+// Allograft Assets
+import imgAllograftHero from "../assets/allograft/allograft.png";
+
 // Components
 import { InterchangeableAbutments } from './components/InterchangeableAbutments';
 import { FeaturedShortImplant } from './components/FeaturedShortImplant';
 import { ClinicalCase } from './components/ClinicalCase';
 import { SurgicalKitContent } from './components/SurgicalKitContent';
+import { AllograftContent } from './components/AllograftContent';
 
 // SVGs
 import highlightSvgPaths from "../imports/svg-kqbjwpljaa";
@@ -49,7 +53,8 @@ export const ProductPage = () => {
   const isSuperline11 = productId === 'superline-11-bone-level';
   const isImplantium = productId === 'implantium-bone-level';
   const isSurgicalKit = productId === 'surgical-kit';
-  const hasFullContent = isSuperline11 || isImplantium || isSurgicalKit;
+  const isAllograft = productId === 'allograft';
+  const hasFullContent = isSuperline11 || isImplantium || isSurgicalKit || isAllograft;
   const hasMediumContent = !hasFullContent && !!product.productLink;
 
   if (!hasFullContent && !hasMediumContent) {
@@ -286,11 +291,11 @@ export const ProductPage = () => {
   }
 
   // Define Product-Specific Content
-  const heroImage = isSuperline11 ? imgSuperlineHero : (isImplantium ? imgImplantiumHero : imgSurgicalKitHero);
+  const heroImage = isSuperline11 ? imgSuperlineHero : (isImplantium ? imgImplantiumHero : (isAllograft ? imgAllograftHero : imgSurgicalKitHero));
   const dimensionsImage = isSuperline11 ? imgSuperlineDimensions : imgImplantiumDimensions;
   const connectionTitle = isImplantium ? "Single Connection Across All Diameters" : "Single Connection System";
-  const heroTitle = isSurgicalKit ? "Surgical Kit" : (isImplantium ? "Implantium" : product.name);
-  const heroSubtitle = isSurgicalKit ? "Simple yet Sophisticated Digital Guide System" : (product.description || 'Developed by Clinicians for Clinicians');
+  const heroTitle = isSurgicalKit ? "Surgical Kit" : (isAllograft ? "Allograft" : (isImplantium ? "Implantium" : product.name));
+  const heroSubtitle = isSurgicalKit ? "Simple yet Sophisticated Digital Guide System" : (isAllograft ? "Demineralized Bone Matrix — Human-derived bone graft for predictable regeneration" : (product.description || 'Developed by Clinicians for Clinicians'));
   const highlights = isImplantium ? [
     { title: 'Double-Threaded Tapered Body', desc: 'Provides self-tapping capability and stability.', path: highlightSvgPaths.p5b81480 },
     { title: 'Optimal Thread Design', desc: 'Square-shaped threads for maximum contact.', path: highlightSvgPaths.p1e4c7e00 },
@@ -360,11 +365,15 @@ export const ProductPage = () => {
 
               {/* Badges */}
               <div className="flex flex-wrap gap-4 md:gap-6 mb-8">
-                {[
+                {(isAllograft ? [
+                  { icon: <Shield size={16} />, title: 'MedPark', subtitle: 'A1 DBM' },
+                  { icon: <Layers size={16} />, title: 'Cortical', subtitle: '100%' },
+                  { icon: <Activity size={16} />, title: 'Syringe', subtitle: 'Delivery' },
+                ] : [
                   { icon: <Shield size={16} />, title: 'Lifetime', subtitle: 'Warranty' },
                   { icon: <Layers size={16} />, title: 'Grade 4', subtitle: 'Titanium' },
                   { icon: <Activity size={16} />, title: 'S.L.A', subtitle: 'Surface' },
-                ].map((badge, i) => (
+                ]).map((badge, i) => (
                   <div key={i} className="flex items-center gap-2.5">
                     <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-white shrink-0">
                       {badge.icon}
@@ -378,10 +387,15 @@ export const ProductPage = () => {
               </div>
 
               <div className="flex items-center gap-3">
-                <button className="bg-gradient-to-r from-[#DD005C] to-[#0542BD] text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg">
-                  View Catalog
-                  <ArrowRight size={14} />
-                </button>
+                {isAllograft && product.productLink ? (
+                  <a href={product.productLink} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-[#DD005C] to-[#0542BD] text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg">
+                    View Product Details <ExternalLink size={14} />
+                  </a>
+                ) : (
+                  <button className="bg-gradient-to-r from-[#DD005C] to-[#0542BD] text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg">
+                    View Catalog <ArrowRight size={14} />
+                  </button>
+                )}
                 <button className="bg-white/5 text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] border border-white/20 hover:bg-white/10 transition-all">
                   Request a Quote
                 </button>
@@ -392,10 +406,10 @@ export const ProductPage = () => {
               initial={{ opacity: 0, scale: 0.95, x: 20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className={`relative w-full flex justify-center lg:justify-end ${isSurgicalKit ? 'max-w-[600px]' : 'max-w-[420px]'}`}
+              className={`relative w-full flex justify-center lg:justify-end ${(isSurgicalKit || isAllograft) ? 'max-w-[600px]' : 'max-w-[420px]'}`}
             >
-              <div className={`w-full relative ${isSurgicalKit ? 'h-[260px] md:h-[300px]' : 'h-[280px] md:h-[380px]'}`}>
-                {isSurgicalKit ? (
+              <div className={`w-full relative ${(isSurgicalKit || isAllograft) ? 'h-[260px] md:h-[300px]' : 'h-[280px] md:h-[380px]'}`}>
+                {(isSurgicalKit || isAllograft) ? (
                   <img 
                     src={heroImage} 
                     alt={product.name} 
@@ -418,7 +432,9 @@ export const ProductPage = () => {
         </div>
       </section>
 
-      {isSurgicalKit ? (
+      {isAllograft ? (
+        <AllograftContent />
+      ) : isSurgicalKit ? (
         <SurgicalKitContent />
       ) : (
         <>
