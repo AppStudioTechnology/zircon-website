@@ -5,6 +5,8 @@ export interface Product {
   specs?: Record<string, string>;
   benefits?: string[];
   image?: string;
+  productLink?: string;
+  brochureLink?: string;
 }
 
 export interface Category {
@@ -40,17 +42,13 @@ export const solutionsData: SolutionType[] = [
           { 
             id: 'superline-bone-level', 
             name: 'Superline (Bone Level)',
-            description: 'A reliable bone-level implant system designed for excellent primary stability and long-term biological integration. Supports predictable outcomes across a wide range of implant indications.'
+            description: 'A reliable bone-level implant system designed for excellent primary stability and long-term biological integration. Supports predictable outcomes across a wide range of implant indications.',
+            productLink: 'https://www.dentiumusa.com/products/implant-systems/superline'
           },
           { 
             id: 'implantium-bone-level', 
             name: 'Implantium (Bone Level)',
             description: 'A clinically proven bone-level implant offering high stability and prosthetic flexibility. Engineered to support durable results in both simple and complex cases.'
-          },
-          { 
-            id: 'nr-line-bone-level', 
-            name: 'NR Line (Bone Level)',
-            description: 'A reliable bone-level implant system optimised for controlled placement and consistent osseointegration. Designed to meet everyday clinical implant requirements.'
           },
           { 
             id: 'simpleline-2-tissue-level', 
@@ -63,25 +61,22 @@ export const solutionsData: SolutionType[] = [
             description: 'A one-piece implant solution designed for minimally invasive procedures. Supports streamlined treatment protocols with reduced surgical complexity.'
           },
           { 
-            id: 'bright-bone-level', 
-            name: 'Bright (Bone Level)',
-            description: 'A bone-level implant system developed to enhance stability and precision in implant placement. Suitable for cases requiring controlled load distribution.'
-          },
-          { 
-            id: 'bright-tissue-level', 
-            name: 'Bright (Tissue Level)',
-            description: 'A tissue-level implant designed to support healthy soft tissue response and simplified prosthetic handling. Balances surgical efficiency with long-term performance.'
+            id: 'bright-implant', 
+            name: 'Bright Implant',
+            description: 'A tissue-level implant built on decades of clinical experience and advanced technology. Supports healthy soft tissue response and simplified prosthetic handling for predictable outcomes.',
+            productLink: 'https://dentiumturkiye.com/urun/bright-implant-tissue-level/',
+            brochureLink: 'https://dentiumturkiye.com/wp-content/uploads/2025/05/bright-Implants.pdf'
           },
           { 
             id: 'dynamic-abutments', 
             name: 'Dynamic Abutments',
             description: 'Advanced abutment solutions that allow precise angulation correction and prosthetic adaptability. Designed to enhance restorative flexibility and aesthetic outcomes.'
           },
-          { id: 'surgical-motor', name: 'Surgical Motor' },
-          { id: 'sinus-kit', name: 'Sinus Kit' },
-          { id: 'help-kit', name: 'Help Kit' },
-          { id: 'osteotome-kit', name: 'Osteotome Kit' },
-          { id: 'trephine-kit', name: 'Trephine Kit' },
+          { id: 'surgical-motor', name: 'Surgical Motor', description: 'High-precision surgical motors for implant placement and bone preparation. Reliable torque control and ergonomic design for efficient clinical workflows.', productLink: 'https://www.dentiumusa.com/products/instruments-motor#ict-motor' },
+          { id: 'sinus-kit', name: 'Sinus Kit', description: 'Specialized instrumentation for sinus lift and bone augmentation procedures. Designed for predictable outcomes in challenging anatomical sites.', productLink: 'https://www.dentiumusa.com/products/instruments-motor#dask-kit' },
+          { id: 'help-kit', name: 'Help Kit', description: 'Comprehensive kit for guided surgery and implant placement. Supports accurate positioning and streamlined surgical protocols.', productLink: 'https://dentiumeurope.com/product/help-kit-xih/' },
+          { id: 'osteotome-kit', name: 'Osteotome Kit', description: 'Osteotome instruments for bone condensation and ridge expansion. Enables minimally invasive techniques for implant site preparation.', productLink: 'https://www.dentiumusa.com/products/instruments-motor#osteotome-kit' },
+          { id: 'trephine-kit', name: 'Trephine Kit', description: 'Trephine drills and accessories for bone harvesting and core sampling. Precision tools for regenerative and diagnostic procedures.', productLink: 'https://www.dentiumusa.com/products/instruments-motor#trephine-kit' },
           { id: 'surgical-kit', name: 'Surgical Kit' },
           { id: 'prosthetic-kit', name: 'Prosthetic Kit' },
           { id: 'ridge-spreader-kit', name: 'Ridge Spreader Kit' },
@@ -96,7 +91,7 @@ export const solutionsData: SolutionType[] = [
         id: 'dental-consumables',
         name: 'Dental Consumables',
         products: [
-          { id: 'sutures', name: 'Sutures' },
+          { id: 'sutures', name: 'Sutures', description: 'Absorbable and non-absorbable sutures for oral and periodontal surgery. Reliable wound closure and soft tissue management.', productLink: 'https://medipac.gr/product-category/monofast/' },
           { id: 'impression-materials', name: 'Impression Materials' },
           { id: 'universal-etchant', name: 'Universal Etchant' },
           { id: 'resin-cement', name: 'Resin Cement' },
@@ -110,19 +105,13 @@ export const solutionsData: SolutionType[] = [
           { id: 'sterilization-wipes', name: 'Sterilization Wipes' },
           { id: 'sterilization-spray', name: 'Sterilization Spray' },
           { id: 'sterilization-liquid', name: 'Sterilization Liquid' },
-        ]
-      },
-      {
-        id: 'regeneration',
-        name: 'Regeneration',
-        products: [
-          { id: 'allograft', name: 'Allograft' },
-          { id: 'xenograft', name: 'Xenograft' },
+          { id: 'allograft', name: 'Allograft', description: 'Human-derived bone graft materials for bone regeneration and augmentation. Supports predictable osseointegration in implant and periodontal applications.', productLink: 'https://medpark.net/product/new_product.php?product_id=56' },
+          { id: 'xenograft', name: 'Xenograft', description: 'Xenograft bone substitute materials for guided bone regeneration. Biocompatible options for ridge preservation and sinus augmentation.', productLink: 'https://medpark.net/product/new_product.php?product_id=14' },
           { id: 'collagen-membrane', name: 'Collagen Membrane' },
-          { id: 'syringe-bone', name: 'Syringe Bone' },
-          { id: 'collagen-graft', name: 'Collagen Graft' },
+          { id: 'syringe-bone', name: 'Syringe Bone', description: 'Injectable bone graft formulations for minimally invasive augmentation. Easy handling and consistent particle distribution for optimal clinical results.', productLink: 'https://www.dentiumusa.com/products/biomaterials#osteon-ii' },
+          { id: 'collagen-graft', name: 'Collagen Graft', description: 'Collagen-based grafting products for soft and hard tissue regeneration. Supports wound healing and barrier function in GBR procedures.', productLink: 'https://www.dentiumthailand.com/collagengraft' },
           { id: 'bone-block', name: 'Bone Block' },
-          { id: 'membrane-pins', name: 'Membrane Pins' },
+          { id: 'membrane-pins', name: 'Membrane Pins', description: 'Fixation pins for securing resorbable and non-resorbable membranes in guided bone regeneration. Stable fixation for predictable healing.', productLink: 'https://dentiumturkiye.com/urun/membrane-pins/' },
           { id: 'membrane-screws', name: 'Membrane Screws' },
         ]
       },

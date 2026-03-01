@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Link, useParams } from 'react-router-dom';
 import { solutionsData } from './data/solutionsData';
-import { ChevronRight, ArrowRight, Check, Shield, Zap, Activity, Layers } from 'lucide-react';
+import { ChevronRight, ArrowRight, Check, Shield, Zap, Activity, Layers, ExternalLink, FileDown } from 'lucide-react';
 
 // Common Assets
 import imgGroup381671 from "figma:asset/fcbf1a6ae17a709a798622b42a2fa36aaa09fb29.png";
@@ -50,8 +50,9 @@ export const ProductPage = () => {
   const isImplantium = productId === 'implantium-bone-level';
   const isSurgicalKit = productId === 'surgical-kit';
   const hasFullContent = isSuperline11 || isImplantium || isSurgicalKit;
+  const hasMediumContent = !hasFullContent && !!product.productLink;
 
-  if (!hasFullContent) {
+  if (!hasFullContent && !hasMediumContent) {
     return (
       <div className="bg-white min-h-screen">
         {/* Hero Section for products without full content */}
@@ -122,6 +123,119 @@ export const ProductPage = () => {
                   Request Early Access
                 </button>
               </motion.div>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  if (hasMediumContent) {
+    const isImplantCategory = categoryId === 'implants';
+    const features = isImplantCategory
+      ? [
+          { title: 'Precision Engineered', desc: 'Designed for predictable placement and long-term stability.', icon: <Zap size={18} /> },
+          { title: 'Clinical Reliability', desc: 'Backed by documented clinical outcomes and quality standards.', icon: <Shield size={18} /> },
+          { title: 'Prosthetic Flexibility', desc: 'Compatible with a wide range of restorative options.', icon: <Layers size={18} /> },
+          { title: 'Documented Outcomes', desc: 'Evidence-based solutions for modern implant practice.', icon: <Activity size={18} /> },
+        ]
+      : [
+          { title: 'Quality Assured', desc: 'Products meet stringent quality and regulatory standards.', icon: <Shield size={18} /> },
+          { title: 'Clinical Grade', desc: 'Suitable for use in professional dental and surgical settings.', icon: <Check size={18} /> },
+          { title: 'Easy to Use', desc: 'Designed for efficient workflows and consistent results.', icon: <Zap size={18} /> },
+          { title: 'Trusted Supply', desc: 'Reliable availability from established partners.', icon: <Layers size={18} /> },
+        ];
+
+    return (
+      <div className="bg-white min-h-screen">
+        <section className="bg-black pt-[136px] sm:pt-[140px] md:pt-[144px] pb-16 md:pb-20 relative overflow-hidden">
+          <div className="absolute inset-0 z-0 opacity-40">
+            <img src={imgGroup381671} alt="" className="w-full h-full object-cover" />
+          </div>
+          <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
+            <div className="flex items-center gap-1.5 mb-6 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em]">
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <ChevronRight size={12} className="text-[#ABABAB]" />
+              <Link to="/solutions" className="hover:text-white transition-colors">Solutions</Link>
+              <ChevronRight size={12} className="text-[#ABABAB]" />
+              <Link to={`/solutions/${typeId}`} className="hover:text-white transition-colors">{typeData?.name}</Link>
+              <ChevronRight size={12} className="text-[#ABABAB]" />
+              <Link to={`/solutions/${typeId}/${categoryId}`} className="hover:text-white transition-colors">{categoryData?.name}</Link>
+              <ChevronRight size={12} className="text-[#DD005C]" />
+              <span className="text-[#DD005C]">{product.name}</span>
+            </div>
+            <div className="text-center max-w-3xl mx-auto">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-white text-2xl sm:text-3xl md:text-4xl font-medium font-['Montserrat'] mb-4 leading-tight"
+              >
+                {product.name}
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-white/80 text-sm md:text-base font-['Montserrat'] max-w-2xl mx-auto leading-relaxed mb-8"
+              >
+                {product.description || 'Professional-grade solution for modern clinical practice.'}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex flex-wrap items-center justify-center gap-3"
+              >
+                <a
+                  href={product.productLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto bg-gradient-to-r from-[#DD005C] to-[#0542BD] text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+                >
+                  View Product Details
+                  <ExternalLink size={14} />
+                </a>
+                {product.brochureLink && (
+                  <a
+                    href={product.brochureLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto bg-white/10 text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] border border-white/20 flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
+                  >
+                    Download Brochure
+                    <FileDown size={14} />
+                  </a>
+                )}
+                <Link
+                  to={`/solutions/${typeId}/${categoryId}`}
+                  className="w-full sm:w-auto border border-white/20 text-white px-6 py-3 rounded-full text-xs font-semibold font-['Montserrat'] flex items-center justify-center gap-2 hover:bg-white/10 transition-all"
+                >
+                  Back to {categoryData?.name}
+                  <ArrowRight size={14} />
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 bg-[#F9FAFB]">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="text-center mb-10">
+              <h2 className="text-[#070707] text-2xl md:text-3xl font-bold font-['Montserrat'] mb-2">Key Features</h2>
+              <p className="text-[#6B7280] text-sm font-['Arial'] max-w-xl mx-auto">Designed for clinical excellence and reliable outcomes.</p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {features.map((item, i) => (
+                <div key={i} className="rounded-2xl p-5 bg-white border border-[#ebebeb] flex gap-4 items-start">
+                  <div className="rounded-xl bg-gradient-to-br from-[#0542BD] to-[#021A4C] p-2.5 shrink-0 text-white">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-['Montserrat'] font-bold text-[14px] text-[#070707] mb-1">{item.title}</h3>
+                    <p className="font-['Arial'] text-[12px] text-[#6B7280] leading-snug">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

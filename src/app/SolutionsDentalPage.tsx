@@ -2,14 +2,13 @@ import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { solutionsData } from './data/solutionsData';
-import { ChevronRight, ArrowRight, Download, MessageCircle, Layers, Syringe, Sparkles, Activity, Settings, Monitor, FlaskConical, Smile } from 'lucide-react';
+import { ChevronRight, ArrowRight, Download, MessageCircle, Layers, Syringe, Activity, Settings, Monitor, FlaskConical, Smile } from 'lucide-react';
 import imgGroup381671 from "figma:asset/fcbf1a6ae17a709a798622b42a2fa36aaa09fb29.png";
 
 // Category Icon Mapping
 const categoryIcons: Record<string, React.ReactNode> = {
   implants: <Layers size={24} />,
   'dental-consumables': <Syringe size={24} />,
-  regeneration: <Sparkles size={24} />,
   endodontics: <Activity size={24} />,
   'dental-equipment': <Settings size={24} />,
   digital: <Monitor size={24} />,
