@@ -410,19 +410,25 @@ export const ProductPage = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className={`relative w-full flex justify-center lg:justify-end ${(isSurgicalKit || isAllograft) ? 'max-w-[600px]' : 'max-w-[420px]'}`}
             >
-              <div className={`w-full relative ${(isSurgicalKit || isAllograft) ? 'h-[260px] md:h-[300px]' : 'h-[280px] md:h-[380px]'}`}>
+              {/* Soft glow behind image so the right side isn’t flat black */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#DD005C]/10 via-transparent to-[#0542BD]/15 pointer-events-none" aria-hidden />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[420px] aspect-square rounded-full bg-white/[0.03] blur-[80px] pointer-events-none" aria-hidden />
+
+              <div className={`relative w-full ${(isSurgicalKit || isAllograft) ? 'min-h-[260px] md:min-h-[300px]' : 'min-h-[280px] md:min-h-[380px]'}`}>
                 {(isSurgicalKit || isAllograft) ? (
-                  <img 
-                    src={heroImage} 
-                    alt={product.name} 
-                    className="w-full h-full object-contain object-center pointer-events-none drop-shadow-2xl" 
-                  />
+                  <div className="relative w-full h-[260px] md:h-[300px] flex items-center justify-center rounded-2xl bg-white/[0.04] border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.05)_inset] p-6 md:p-8">
+                    <img 
+                      src={heroImage} 
+                      alt={product.name} 
+                      className="max-w-full max-h-full w-auto h-full object-contain object-center pointer-events-none drop-shadow-2xl" 
+                    />
+                  </div>
                 ) : (
-                  <div className="content-stretch flex flex-col items-center justify-center relative size-full" data-name="Container">
+                  <div className="content-stretch flex flex-col items-center justify-center relative size-full rounded-2xl bg-white/[0.04] border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] p-4" data-name="Container">
                     <div className="h-[360px] relative shrink-0 w-[420px]" data-name="image 12">
                       <img 
                         alt={product.name} 
-                        className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" 
+                        className="absolute inset-0 max-w-none object-cover pointer-events-none size-full rounded-xl" 
                         src={heroImage} 
                       />
                     </div>
