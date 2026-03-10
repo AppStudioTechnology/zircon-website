@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useParams } from 'react-router-dom';
-import { solutionsData } from './data/solutionsData';
+import { solutionsData, hasProductDetailPage } from './data/solutionsData';
 import { ChevronRight, ArrowRight, Layers, Syringe, Activity, Settings, Monitor, FlaskConical, Smile, Package, ClipboardList, Droplets, Home as HomeIcon } from 'lucide-react';
 import imgGroup381671 from "figma:asset/fcbf1a6ae17a709a798622b42a2fa36aaa09fb29.png";
 import imgImage12 from "figma:asset/164a1c337866b5ab0f36e75f9cb75d06351e34a6.png";
@@ -143,13 +143,20 @@ export const CategoryPage = () => {
                               exit={{ opacity: 0, height: 0 }}
                               className="overflow-hidden"
                             >
-                              <Link 
-                                to={`/solutions/${typeId}/${categoryId}/${product.id}`}
-                                className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#DD005C] to-[#0088B3] text-white px-3 py-1.5 rounded-md text-[10px] font-semibold font-['Montserrat'] shadow-md hover:opacity-90 transition-opacity"
-                              >
-                                View Details
-                                <ChevronRight size={12} />
-                              </Link>
+                              {hasProductDetailPage(product) ? (
+                                <Link 
+                                  to={`/solutions/${typeId}/${categoryId}/${product.id}`}
+                                  className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#DD005C] to-[#0088B3] text-white px-3 py-1.5 rounded-md text-[10px] font-semibold font-['Montserrat'] shadow-md hover:opacity-90 transition-opacity"
+                                >
+                                  View Details
+                                  <ChevronRight size={12} />
+                                </Link>
+                              ) : (
+                                <span className="inline-flex items-center gap-1.5 bg-[#E5E5E5] text-[#9CA3AF] px-3 py-1.5 rounded-md text-[10px] font-semibold font-['Montserrat'] cursor-not-allowed">
+                                  View Details
+                                  <ChevronRight size={12} />
+                                </span>
+                              )}
                             </motion.div>
                           )}
                         </AnimatePresence>

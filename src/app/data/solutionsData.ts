@@ -17,6 +17,13 @@ export interface Product {
   tagline?: string;
 }
 
+/** Products with a dedicated detail page: full custom content (4 products) or productLink (medium content). */
+const PRODUCT_IDS_WITH_FULL_DETAIL_PAGE = ['superline-11-bone-level', 'implantium-bone-level', 'surgical-kit', 'allograft'] as const;
+
+export function hasProductDetailPage(product: Product): boolean {
+  return PRODUCT_IDS_WITH_FULL_DETAIL_PAGE.includes(product.id as typeof PRODUCT_IDS_WITH_FULL_DETAIL_PAGE[number]) || !!product.productLink;
+}
+
 export interface Category {
   id: string;
   name: string;

@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { solutionsData } from './data/solutionsData';
+import { solutionsData, hasProductDetailPage } from './data/solutionsData';
 import { ChevronRight, ArrowRight, Download, MessageCircle, Layers, Syringe, Activity, Settings, Monitor, FlaskConical, Smile } from 'lucide-react';
 import imgGroup381671 from "figma:asset/fcbf1a6ae17a709a798622b42a2fa36aaa09fb29.png";
 
@@ -160,13 +160,20 @@ export const SolutionsDentalPage = () => {
                         </div>
                       </div>
                       
-                      <Link 
-                        to={`/solutions/dental/${activeCategoryId}/${product.id}`}
-                        className="text-[#DD005C] font-semibold font-['Montserrat'] text-[10px] uppercase tracking-widest flex items-center gap-1.5"
-                      >
-                        View Details
-                        <ChevronRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
-                      </Link>
+                      {hasProductDetailPage(product) ? (
+                        <Link 
+                          to={`/solutions/dental/${activeCategoryId}/${product.id}`}
+                          className="text-[#DD005C] font-semibold font-['Montserrat'] text-[10px] uppercase tracking-widest flex items-center gap-1.5"
+                        >
+                          View Details
+                          <ChevronRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                        </Link>
+                      ) : (
+                        <span className="text-[#ABABAB] font-semibold font-['Montserrat'] text-[10px] uppercase tracking-widest flex items-center gap-1.5 cursor-not-allowed">
+                          View Details
+                          <ChevronRight size={12} />
+                        </span>
+                      )}
                     </motion.div>
                   ))}
                 </div>

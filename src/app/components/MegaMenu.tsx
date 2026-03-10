@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { solutionsData } from '../data/solutionsData';
+import { solutionsData, hasProductDetailPage } from '../data/solutionsData';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -113,17 +113,27 @@ export const MegaMenu: React.FC<MegaMenuProps> = ({ isOpen, onClose }) => {
                 </div>
 
                 <div className="grid grid-cols-3 gap-x-8 gap-y-4">
-                  {currentCategoryData.products.slice(0, 15).map((product) => (
-                    <Link
-                      key={product.id}
-                      to={`/solutions/${activeType}/${activeCategory}/${product.id}`}
-                      onClick={onClose}
-                      className="text-[#4A4A4A] text-sm font-medium font-['Montserrat'] hover:text-[#DD005C] hover:translate-x-1 transition-all flex items-center gap-2"
-                    >
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#EBEBEB]" />
-                      {product.name}
-                    </Link>
-                  ))}
+                  {currentCategoryData.products.slice(0, 15).map((product) =>
+                    hasProductDetailPage(product) ? (
+                      <Link
+                        key={product.id}
+                        to={`/solutions/${activeType}/${activeCategory}/${product.id}`}
+                        onClick={onClose}
+                        className="text-[#4A4A4A] text-sm font-medium font-['Montserrat'] hover:text-[#DD005C] hover:translate-x-1 transition-all flex items-center gap-2"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#EBEBEB]" />
+                        {product.name}
+                      </Link>
+                    ) : (
+                      <span
+                        key={product.id}
+                        className="text-[#ABABAB] text-sm font-medium font-['Montserrat'] flex items-center gap-2 cursor-not-allowed"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#E5E5E5]" />
+                        {product.name}
+                      </span>
+                    )
+                  )}
                   {currentCategoryData.products.length > 15 && (
                     <div className="text-[#ABABAB] text-sm font-medium font-['Montserrat'] italic">
                       + {currentCategoryData.products.length - 15} more products
