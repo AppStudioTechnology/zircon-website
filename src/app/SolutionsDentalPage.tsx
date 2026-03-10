@@ -32,11 +32,11 @@ export const SolutionsDentalPage = () => {
       {/* Hero Section */}
       <section className="bg-black pt-[136px] sm:pt-[140px] md:pt-[144px] pb-16 md:pb-20 relative overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 z-0 opacity-40">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <img 
             src={imgGroup381671} 
             alt="" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen"
           />
         </div>
 

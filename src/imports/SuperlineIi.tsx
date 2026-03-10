@@ -1300,7 +1300,7 @@ function Desktop2() {
   return (
     <div className="bg-black h-[752px] overflow-clip relative shrink-0 w-[1440px]" data-name="Desktop - 121">
       <div className="absolute h-[622px] left-0 top-[226px] w-[1440px]" data-name="Group 38167 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGroup381671} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full opacity-15 md:opacity-20 mix-blend-screen" src={imgGroup381671} />
       </div>
       <Container30 />
     </div>
@@ -1840,7 +1840,7 @@ function Desktop4() {
   return (
     <div className="bg-black h-[752px] overflow-clip relative shrink-0 w-[1440px]" data-name="Desktop - 123">
       <div className="absolute h-[622px] left-0 top-[226px] w-[1440px]" data-name="Group 38167 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGroup381671} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full opacity-15 md:opacity-20 mix-blend-screen" src={imgGroup381671} />
       </div>
       <Container65 />
     </div>

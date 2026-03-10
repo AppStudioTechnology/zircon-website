@@ -69,8 +69,8 @@ export const SurgicalKitContent = () => {
 
       {/* Key Clinical Benefits - match Titanium section */}
       <section className="py-16 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 opacity-100">
-          <img src={imgGridBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 pointer-events-none">
+          <img src={imgGridBg} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
         </div>
         
         <div className="max-w-[1000px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-12">
@@ -168,8 +168,8 @@ export const SurgicalKitContent = () => {
 
       {/* FX3610 Drilling Sequence - match Titanium section */}
       <section className="py-16 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 opacity-100">
-          <img src={imgGridBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 pointer-events-none">
+          <img src={imgGridBg} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
         </div>
         
         <div className="max-w-[1000px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row-reverse items-center gap-12">

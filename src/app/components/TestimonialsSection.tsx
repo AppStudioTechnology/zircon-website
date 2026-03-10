@@ -99,11 +99,11 @@ export function TestimonialsSection() {
   return (
     <section id="testimonials" className="relative bg-[#fafbff] py-16 overflow-hidden w-full">
       {/* Background Pattern - subtle */}
-      <div className="absolute inset-0 z-0 opacity-[0.05] grayscale pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <img 
           src={imgGroup381671} 
           alt="" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen grayscale"
         />
       </div>
 

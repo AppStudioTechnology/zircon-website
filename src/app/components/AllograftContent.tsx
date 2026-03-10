@@ -130,8 +130,8 @@ export const AllograftContent = () => {
 
       {/* Specifications */}
       <section className="py-16 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 opacity-100">
-          <img src={imgGroup381671} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 pointer-events-none">
+          <img src={imgGroup381671} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
         </div>
         <div className="max-w-[1200px] mx-auto px-6 relative z-10">
           <div className="mb-10">

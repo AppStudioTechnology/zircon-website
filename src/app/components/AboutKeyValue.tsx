@@ -8,8 +8,8 @@ export const AboutKeyValue = () => {
   return (
     <section className="relative w-full bg-black py-16 md:py-24 overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <img src={imgPattern} alt="" className="w-full h-full object-cover" />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img src={imgPattern} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
       </div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-[clamp(16px,4vw,60px)]">

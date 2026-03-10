@@ -7,11 +7,11 @@ export function SolutionsSection() {
   return (
     <section className="relative bg-[#070707] py-16 md:py-20 overflow-hidden w-full">
       {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-40">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <img 
           src={imgGroup381671} 
           alt="" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen"
         />
       </div>
 

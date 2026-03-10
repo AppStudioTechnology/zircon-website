@@ -49,7 +49,7 @@ export function Footer() {
         <img 
           src={imgGroup381671} 
           alt="" 
-          className="w-full h-full object-cover opacity-25 md:opacity-30 mix-blend-screen" 
+          className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" 
         />
       </div>
 

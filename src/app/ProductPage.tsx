@@ -63,7 +63,7 @@ export const ProductPage = () => {
         {/* Hero Section for products without full content */}
         <section className="bg-black pt-[136px] sm:pt-[140px] md:pt-[144px] pb-16 md:pb-20 relative overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-40">
-            <img src={imgGroup381671} alt="" className="w-full h-full object-cover" />
+            <img src={imgGroup381671} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
           </div>
 
           <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
@@ -147,7 +147,7 @@ export const ProductPage = () => {
         {/* Hero */}
         <section className="bg-black pt-[160px] sm:pt-[168px] md:pt-[176px] pb-16 md:pb-20 relative overflow-hidden">
           <div className="absolute inset-0 z-0 opacity-40">
-            <img src={imgGroup381671} alt="" className="w-full h-full object-cover" />
+            <img src={imgGroup381671} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
           </div>
           <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
             <div className="flex items-center gap-1.5 mb-8 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em]">
@@ -221,7 +221,7 @@ export const ProductPage = () => {
         {specEntries.length > 0 && (
           <section className="py-16 bg-black relative overflow-hidden">
             <div className="absolute inset-0 opacity-100">
-              <img src={imgGroup381671} alt="" className="w-full h-full object-cover" />
+              <img src={imgGroup381671} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
             </div>
             <div className="max-w-[1200px] mx-auto px-6 relative z-10">
               <div className="mb-10">
@@ -320,7 +320,7 @@ export const ProductPage = () => {
       {/* Hero Section - same padding/typography as category hero, layout: text left, image right */}
       <section className="bg-black pt-[136px] sm:pt-[140px] md:pt-[144px] pb-16 md:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-40">
-          <img src={imgGroup381671} alt="" className="w-full h-full object-cover" />
+          <img src={imgGroup381671} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
         </div>
 
         <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
@@ -494,7 +494,7 @@ export const ProductPage = () => {
       {/* Titanium Section */}
       <section className="py-16 bg-black relative overflow-hidden">
         <div className="absolute inset-0 opacity-100">
-          <img src={imgGroup381671} alt="" className="w-full h-full object-cover" />
+          <img src={imgGroup381671} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
         </div>
         
         <div className="max-w-[1000px] mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-12">

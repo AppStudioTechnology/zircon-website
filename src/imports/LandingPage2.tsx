@@ -103,7 +103,7 @@ function Desktop3() {
   return (
     <div className="bg-black h-[621px] overflow-clip relative shrink-0 w-[1440px]" data-name="Desktop - 121">
       <div className="absolute h-[621px] left-0 top-0 w-[1439px]" data-name="Group 38167 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGroup381671} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full opacity-15 md:opacity-20 mix-blend-screen" src={imgGroup381671} />
       </div>
       <Frame32 />
     </div>
@@ -449,7 +449,7 @@ function Desktop1() {
   return (
     <div className="bg-[#fafbff] h-[748px] overflow-clip relative shrink-0 w-full" data-name="Desktop - 98">
       <div className="absolute h-[621px] left-px top-[127px] w-[1439px]" data-name="Group 38167 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGroup381671} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full opacity-15 md:opacity-20 mix-blend-screen" src={imgGroup381671} />
       </div>
       <Asset />
       <Frame7 />
@@ -1255,7 +1255,7 @@ function Desktop() {
   return (
     <div className="bg-black h-[1024px] overflow-clip relative shrink-0 w-full" data-name="Desktop - 96">
       <div className="absolute h-[621px] left-px top-[592px] w-[1439px]" data-name="Group 38167 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGroup381671} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full opacity-15 md:opacity-20 mix-blend-screen" src={imgGroup381671} />
       </div>
       <Frame45 />
       <Frame66 />

@@ -223,7 +223,7 @@ export default function Desktop() {
   return (
     <div className="bg-black relative size-full" data-name="Desktop - 123">
       <div className="absolute h-[622px] left-0 top-[226px] w-[1440px]" data-name="Group 38167 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGroup381671} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full opacity-15 md:opacity-20 mix-blend-screen" src={imgGroup381671} />
       </div>
       <Container />
     </div>

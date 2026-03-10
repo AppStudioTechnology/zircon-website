@@ -7,11 +7,11 @@ export const AboutHero = () => {
   return (
     <section className="relative w-full bg-black overflow-hidden pt-[136px] sm:pt-[140px] md:pt-[144px] pb-16 md:pb-20">
       {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-60">
+      <div className="absolute inset-0 z-0">
         <img 
           src={imgGroup381671} 
           alt="" 
-          className="w-full h-full object-cover mix-blend-screen"
+          className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen"
         />
         <div className="absolute inset-0 bg-black/40" />
       </div>

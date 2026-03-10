@@ -219,7 +219,7 @@ function Frame10() {
   return (
     <div className="absolute bg-black h-[510px] left-[32px] overflow-clip rounded-[12px] top-[32px] w-[1376px]">
       <div className="absolute h-[594px] left-px top-[82px] w-[1376px]" data-name="Group 38167 1">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgGroup381671} />
+        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full opacity-15 md:opacity-20 mix-blend-screen" src={imgGroup381671} />
       </div>
       <Container />
       <Frame9 />
