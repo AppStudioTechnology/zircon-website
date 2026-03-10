@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ArrowRight, CalendarDays } from 'lucide-react';
+import { ArrowRight, CalendarDays } from 'lucide-react';
 import imgGroup381671 from "figma:asset/fcbf1a6ae17a709a798622b42a2fa36aaa09fb29.png";
 
 export const ContactPage = () => {
@@ -23,15 +23,6 @@ export const ContactPage = () => {
         </div>
 
         <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-1.5 mb-6 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em] justify-center">
-            <Link to="/" className="hover:text-white transition-colors">
-              Home
-            </Link>
-            <ChevronRight size={12} className="text-[#ABABAB]" />
-            <span className="text-[#DD005C]">Contact Us</span>
-          </div>
-
           <div className="text-center max-w-3xl mx-auto">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}

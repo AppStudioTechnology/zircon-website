@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { 
-  ChevronRight, 
   ArrowRight, 
   ArrowLeft, 
   ArrowUpRight 
@@ -81,16 +80,6 @@ export const EventsPage = () => {
         </div>
 
         <div className="relative z-10 max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)]">
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center justify-center gap-1.5 mb-6 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em]"
-          >
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-            <ChevronRight size={12} className="text-[#ABABAB]" />
-            <span className="text-[#DD005C]">Events</span>
-          </motion.div>
-
           <div className="text-center max-w-3xl mx-auto">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}

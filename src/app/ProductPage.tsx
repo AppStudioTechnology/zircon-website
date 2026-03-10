@@ -67,19 +67,19 @@ export const ProductPage = () => {
           </div>
 
           <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
-            {/* Breadcrumbs */}
-            <div className="flex items-center gap-1.5 mb-6 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em]">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight size={12} className="text-[#ABABAB]" />
-              <Link to="/solutions" className="hover:text-white transition-colors">Solutions</Link>
-              <ChevronRight size={12} className="text-[#ABABAB]" />
-              <Link to={`/solutions/${typeId}`} className="hover:text-white transition-colors">{typeData?.name}</Link>
-              <ChevronRight size={12} className="text-[#ABABAB]" />
-              <Link to={`/solutions/${typeId}/${categoryId}`} className="hover:text-white transition-colors">{categoryData?.name}</Link>
-              <ChevronRight size={12} className="text-[#DD005C]" />
-              <span className="text-[#DD005C]">{product.name}</span>
-            </div>
-
+            <nav aria-label="Breadcrumb" className="flex justify-center mb-5">
+              <ol className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.12em] text-white/60">
+                <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+                <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+                <li><Link to="/solutions" className="hover:text-white transition-colors">Solutions</Link></li>
+                <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+                <li><Link to={`/solutions/${typeId}`} className="hover:text-white transition-colors">{typeData?.name}</Link></li>
+                <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+                <li><Link to={`/solutions/${typeId}/${categoryId}`} className="hover:text-white transition-colors">{categoryData?.name}</Link></li>
+                <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+                <li className="text-white/90" aria-current="page">{product.name}</li>
+              </ol>
+            </nav>
             <div className="text-center max-w-3xl mx-auto">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
@@ -150,17 +150,19 @@ export const ProductPage = () => {
             <img src={imgGroup381671} alt="" className="w-full h-full object-cover opacity-15 md:opacity-20 mix-blend-screen" />
           </div>
           <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
-            <div className="flex items-center gap-1.5 mb-8 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em]">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight size={12} className="text-[#ABABAB]" />
-              <Link to="/solutions" className="hover:text-white transition-colors">Solutions</Link>
-              <ChevronRight size={12} className="text-[#ABABAB]" />
-              <Link to={`/solutions/${typeId}`} className="hover:text-white transition-colors">{typeData?.name}</Link>
-              <ChevronRight size={12} className="text-[#ABABAB]" />
-              <Link to={`/solutions/${typeId}/${categoryId}`} className="hover:text-white transition-colors">{categoryData?.name}</Link>
-              <ChevronRight size={12} className="text-[#DD005C]" />
-              <span className="text-[#DD005C]">{product.name}</span>
-            </div>
+            <nav aria-label="Breadcrumb" className="mb-5">
+              <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.12em] text-white/60">
+                <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+                <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+                <li><Link to="/solutions" className="hover:text-white transition-colors">Solutions</Link></li>
+                <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+                <li><Link to={`/solutions/${typeId}`} className="hover:text-white transition-colors">{typeData?.name}</Link></li>
+                <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+                <li><Link to={`/solutions/${typeId}/${categoryId}`} className="hover:text-white transition-colors">{categoryData?.name}</Link></li>
+                <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+                <li className="text-white/90" aria-current="page">{product.name}</li>
+              </ol>
+            </nav>
             <div className="max-w-3xl">
               {product.refNumber && (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="inline-flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full border border-white/10 mb-4">
@@ -324,19 +326,19 @@ export const ProductPage = () => {
         </div>
 
         <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-1.5 mb-6 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em]">
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-            <ChevronRight size={12} className="text-[#ABABAB]" />
-            <Link to="/solutions" className="hover:text-white transition-colors">Solutions</Link>
-            <ChevronRight size={12} className="text-[#ABABAB]" />
-            <Link to={`/solutions/${typeId}`} className="hover:text-white transition-colors">{typeData?.name}</Link>
-            <ChevronRight size={12} className="text-[#ABABAB]" />
-            <Link to={`/solutions/${typeId}/${categoryId}`} className="hover:text-white transition-colors">{categoryData?.name}</Link>
-            <ChevronRight size={12} className="text-[#DD005C]" />
-            <span className="text-[#DD005C]">{product.name}</span>
-          </div>
-
+          <nav aria-label="Breadcrumb" className="mb-5">
+            <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.12em] text-white/60">
+              <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+              <li><Link to="/solutions" className="hover:text-white transition-colors">Solutions</Link></li>
+              <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+              <li><Link to={`/solutions/${typeId}`} className="hover:text-white transition-colors">{typeData?.name}</Link></li>
+              <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+              <li><Link to={`/solutions/${typeId}/${categoryId}`} className="hover:text-white transition-colors">{categoryData?.name}</Link></li>
+              <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+              <li className="text-white/90" aria-current="page">{product.name}</li>
+            </ol>
+          </nav>
           <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between gap-6 lg:gap-8 w-full">
             <div className="w-full max-w-xl">
               <motion.div

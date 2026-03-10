@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Link, useParams } from 'react-router-dom';
 import { solutionsData } from './data/solutionsData';
-import { ArrowRight, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const SolutionsTypePage = () => {
   const { typeId } = useParams();
@@ -15,13 +15,6 @@ export const SolutionsTypePage = () => {
       {/* Header */}
       <section className="bg-white pt-[136px] sm:pt-[140px] md:pt-[144px] pb-16 md:pb-20 border-b border-[#EBEBEB]">
         <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)]">
-          {/* Breadcrumbs */}
-          <div className="flex items-center gap-1.5 mb-6 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em]">
-            <span>Solutions</span>
-            <ChevronRight size={12} />
-            <span className="text-[#DD005C]">{typeData.name}</span>
-          </div>
-
           <div className="max-w-3xl">
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}

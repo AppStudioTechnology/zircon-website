@@ -48,20 +48,15 @@ export const CategoryPage = () => {
         </div>
 
         <div className="max-w-[1600px] mx-auto px-[clamp(16px,3vw,48px)] relative z-10">
-          <div className="flex items-center gap-1.5 mb-6 text-[#ABABAB] text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.2em] justify-center">
-            <Link to="/" className="hover:text-white transition-colors flex items-center gap-1">
-               <HomeIcon size={12} /> Home
-            </Link>
-            <ChevronRight size={12} className="text-[#ABABAB]" />
-            <span className="text-white/60">Solutions</span>
-            <ChevronRight size={12} className="text-[#ABABAB]" />
-            <Link to={`/solutions/${typeId}`} className="hover:text-white transition-colors">
-              {typeData?.name} Solutions
-            </Link>
-            <ChevronRight size={12} className="text-[#DD005C]" />
-            <span className="text-[#DD005C]">{categoryData.name}</span>
-          </div>
-
+          <nav aria-label="Breadcrumb" className="flex justify-center mb-5">
+            <ol className="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-[10px] font-['Montserrat'] font-medium uppercase tracking-[0.12em] text-white/60">
+              <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
+              <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+              <li><Link to={`/solutions/${typeId}`} className="hover:text-white transition-colors">{typeData?.name}</Link></li>
+              <li aria-hidden className="text-white/40 select-none"><ChevronRight size={10} strokeWidth={2.5} /></li>
+              <li className="text-white/90" aria-current="page">{categoryData.name}</li>
+            </ol>
+          </nav>
           <div className="text-center max-w-3xl mx-auto">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
